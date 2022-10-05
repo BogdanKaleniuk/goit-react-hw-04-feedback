@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <ul>
       {options.map(option => {
         return (
-          <li key={shortid.generate()}>
+          <li key={option}>
             <button type="button" onClick={() => onLeaveFeedback(option)}>
               {option}
             </button>
@@ -18,6 +17,6 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
 }
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
   onLeaveFeedback: PropTypes.string.isRequired,
 };
